@@ -1,0 +1,40 @@
+export const DevelopList = [
+  {
+    id: 2,
+    name: "류진아",
+    division: "개발팀",
+    detailtask:
+      "-Map\nIMGUI를 통한 Mesh의 Scale, Rotate, Position 수치 조절(선택된 Mesh) \nPhysX 적용(Python, CMake 설치 호환 확인)",
+    maintask: "3D 모작(Fall Guys)",
+    lefttask: "",
+    taskplan: "",
+    event: "상세보기",
+    date: "",
+    memo: "",
+  },
+  {
+    id: 3,
+    name: "박신비",
+    division: "개발팀",
+    detailtask: "수정 및 삭제 기능",
+    maintask: "업무일지 관리 웹 개발",
+    lefttask: "페이지 디자인 적용",
+    taskplan: " ",
+    event: "상세보기",
+    date: "",
+    memo: "",
+  },
+  {
+    id: 4,
+    name: "이다정",
+    division: "개발팀",
+    detailtask:
+      "제휴사별 포인트 및 결제 관련 업무 관리하는 웹 개발 \n이용하는 사용자의 편의성을 위한 사용성 개선 \n기획자 및 BE 개발자와 협의를 통해 서비스 개발",
+    maintask: "B2B 서비스 FE 개발",
+    lefttask: "포인트 전송 내역 조회 개발",
+    taskplan: "사용성 개선 티켓 확인",
+    date: "",
+    event: "상세보기",
+    memo: "",
+  },
+];

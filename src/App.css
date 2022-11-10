@@ -1,0 +1,297 @@
+body {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  white-space: pre-wrap;
+}
+
+.Login {
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 150px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #ec92dd;
+
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+}
+
+label {
+  display: inline-block;
+  width: 35px;
+}
+
+.Login input {
+  height: 25px;
+  width: 145px;
+}
+
+.Login .btn {
+  margin-left: 7px;
+}
+
+.Login button {
+  width: 80px;
+  height: 63px;
+  border: none;
+  background-color: rgb(205, 171, 236);
+  border-radius: 2px;
+}
+
+.Login_pw {
+  margin-top: 8px;
+}
+
+.List {
+  height: 500px;
+  margin-top: 100px;
+}
+
+.List_title {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 300px 200px 100px;
+  background-color: #eccefa;
+  text-align: center;
+  border-bottom: 3px solid lightgrey;
+}
+
+.Ceo_cell {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 300px 200px 100px;
+  text-align: center;
+  background-color: #fffefe;
+  border-bottom: 3px solid lightgrey;
+}
+.Develop_cell {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 300px 200px 100px;
+  text-align: center;
+  background-color: #fffefe;
+  border-bottom: 3px solid lightgrey;
+}
+
+.Security_cell {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 300px 200px 100px;
+  text-align: center;
+  background-color: #fffefe;
+  border-bottom: 3px solid lightgrey;
+}
+
+.Ceo_block {
+  display: grid;
+  grid-template-columns: 100px 100px 300px 200px 100px;
+  text-align: center;
+}
+
+.Develop_block {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: 100px 100px 300px 200px 100px;
+}
+.Security_block {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: 100px 100px 300px 200px 100px;
+}
+
+.Ceo_dep {
+  grid-row: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Develop_dep {
+  display: flex;
+  grid-row: span 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.Security_dep {
+  display: flex;
+  grid-row: span 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.Develop_link,
+.Security_link,
+.Ceo_link {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.goWrite_wrap {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.New {
+  margin-top: 70px;
+}
+
+.New_table {
+  border-collapse: collapse;
+}
+
+.New_table td,
+th {
+  border: 1px solid lightgray;
+  height: 40px;
+}
+
+.New_table th {
+  width: 150px;
+}
+
+.New_table td {
+  width: 250px;
+}
+
+.New_table .New_title td {
+  text-align: center;
+}
+
+.New_table .New_maintask {
+  width: 800px;
+  min-height: 100px;
+  resize: vertical;
+  border: none;
+}
+
+.New_table .New_detailtask {
+  width: 800px;
+  min-height: 300px;
+  resize: vertical;
+  border: none;
+}
+.New_table .New_lefttask {
+  width: 800px;
+  min-height: 80px;
+  resize: vertical;
+  border: none;
+}
+.New_table .New_taskplan {
+  width: 800px;
+  min-height: 100px;
+  resize: vertical;
+  border: none;
+}
+
+.New_button_wrap {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.New_Edit {
+  margin-left: 30px;
+  background-color: #f8c8c0;
+  border: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.WorkLog {
+  margin-top: 100px;
+}
+
+.WorkLog_content {
+  width: 800px;
+  min-height: 300px;
+  background-color: rgb(243, 234, 248);
+  padding-inline-start: 10px;
+  padding-top: 10px;
+}
+
+.Worklog_table {
+  border-collapse: collapse;
+}
+.Worklog_table td,
+th {
+  border: 1px solid lightgray;
+  height: 40px;
+}
+
+.Worklog_table th {
+  width: 170px;
+}
+
+.Worklog_table td {
+  width: 310px;
+}
+
+.Worklog_table .Worklog_title td {
+  text-align: center;
+}
+.Worklog_table .Maintask th {
+  height: 100px;
+}
+
+.Worklog_table .Detailtask th {
+  height: 300px;
+}
+
+.Worklog_table .lefttask th {
+  height: 80px;
+}
+
+.Worklog_table .taskplan th {
+  height: 100px;
+}
+
+.Maintask .New_maintask {
+  width: 800px;
+  min-height: 100px;
+  resize: vertical;
+  border: none;
+}
+
+.Detailtask .New_detailtask {
+  width: 800px;
+  min-height: 300px;
+  resize: vertical;
+  border: none;
+}
+
+.lefttask .New_lefttask {
+  width: 800px;
+  min-height: 80px;
+  resize: vertical;
+  border: none;
+}
+.taskplan .New_taskplan {
+  width: 800px;
+  min-height: 100px;
+  resize: vertical;
+  border: none;
+}
+
+.Ceo_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Ceo_header .removebtn {
+  border: none;
+  width: 80px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 2px;
+  font-size: 12px;
+  cursor: pointer;
+}
