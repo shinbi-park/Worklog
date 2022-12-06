@@ -10,7 +10,7 @@ export const DevelopList = [
     taskplan: "",
     event: "상세보기",
     date: "",
-    memo: "",
+    memo: "내근",
   },
   {
     id: 3,
@@ -22,7 +22,7 @@ export const DevelopList = [
     taskplan: " ",
     event: "상세보기",
     date: "",
-    memo: "",
+    memo: "내근",
   },
   {
     id: 4,
@@ -35,6 +35,6 @@ export const DevelopList = [
     taskplan: "사용성 개선 티켓 확인",
     date: "",
     event: "상세보기",
-    memo: "",
+    memo: "내근",
   },
 ];

@@ -9,7 +9,7 @@ export const SecurityList = [
     lefttask: "서비스 이용자 정보 탈취를 위한 피싱 서버 구축",
     taskplan: "발견된 취약점에 대한 위험도 평가 및 조치 일정 개발팀과 협의",
     date: "",
-    memo: "",
+    memo: "내근",
   },
   {
     id: 6,
@@ -22,6 +22,6 @@ export const SecurityList = [
       "취약점의 조치 방안이 현 시스템 구조에 적용 불가한 건에 대한 이슈",
     taskplan: "금주 주간보고 진행",
     date: "",
-    memo: "",
+    memo: "내근",
   },
 ];

@@ -19,7 +19,7 @@ const CeoItem = ({ id, name, memo, view, data }) => {
         )}
 
         <p className="Ceo_time">{data.isUpload ? date : <></>}</p>
-        <p className="Ceo_memo">{memo}</p>
+        <p className="Ceo_memo">{data.memo}</p>
         <p className="Ceo_view">
           {data.isUpload ? <FiCheckCircle /> : <FiMinus />}
         </p>

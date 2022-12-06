@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkLog from "../components/WorkLog";
 import { Button } from "primereact/button";
 
 const CeoWorkLog = ({ data, onEdit, onRemove }) => {
+  const Type = [{ type: "내근" }, { type: "출장" }, { type: "연차" }];
   const logref = useRef();
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [isWritten, setIsWritten] = useState(false);
@@ -11,6 +12,7 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
   const [curDetail, setCurDetail] = useState(data.detailtask);
   const [curLeft, setCurLeft] = useState(data.lefttask);
   const [curPlan, setCurPlan] = useState(data.taskplan);
+  const [curMemo, setCurMemo] = useState(data.memo);
   const navigate = useNavigate();
 
   const isWrittenToggle = () => {
@@ -27,7 +29,7 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
       logref.current.focus();
       return;
     }
-    onEdit(curMain, curDetail, curLeft, curPlan);
+    onEdit(curMain, curDetail, curLeft, curPlan, curMemo);
 
     isWrittenToggle();
   };
@@ -58,9 +60,6 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
           icon="pi pi-trash"
           onClick={Removelog}
         />
-        {/* <button className="removebtn" onClick={Removelog}>
-          삭제하기
-        </button> */}
       </div>
       <table className="Worklog_table">
         <tbody>
@@ -132,6 +131,30 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
                 </>
               ) : (
                 <>{data.taskplan}</>
+              )}
+            </td>
+          </tr>
+          <tr>
+            <th>비고</th>
+            <td colSpan={3}>
+              {isWritten ? (
+                <div className="New_memo">
+                  {Type.map((item) => {
+                    return (
+                      <React.Fragment key={item.type}>
+                        <input
+                          type="radio"
+                          name="memo"
+                          id={item.type}
+                          onChange={(e) => setCurMemo(e.target.id)}
+                        />
+                        <label htmlFor={item.type}>{item.type}</label>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              ) : (
+                <>{data.memo}</>
               )}
             </td>
           </tr>

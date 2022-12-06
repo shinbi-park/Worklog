@@ -26,11 +26,12 @@ const App = () => {
       detailtask: "",
       lefttask: "",
       taskplan: "",
+      memo: "",
       isUpload: "false",
     },
   ];
 
-  const onCreate = (maintask, detailtask, lefttask, taskplan) => {
+  const onCreate = (maintask, detailtask, lefttask, taskplan, memo) => {
     const newItem = {
       id: 1,
       division: "대표이사",
@@ -39,18 +40,26 @@ const App = () => {
       detailtask,
       lefttask,
       taskplan,
+      memo,
       isUpload: "true",
     };
     setData(newItem);
   };
 
-  const onEdit = (newMaintask, newDetailtask, newLefttask, newtaskplan) => {
+  const onEdit = (
+    newMaintask,
+    newDetailtask,
+    newLefttask,
+    newtaskplan,
+    newMemo
+  ) => {
     setData({
       ...data,
       maintask: newMaintask,
       detailtask: newDetailtask,
       lefttask: newLefttask,
       taskplan: newtaskplan,
+      memo: newMemo,
     });
   };
 

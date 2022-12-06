@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 
 const New = ({ onCreate }) => {
+  const Type = [{ type: "내근" }, { type: "출장" }, { type: "연차" }];
   const logref = useRef();
   const [state, setState] = useState({
     detailtask: "",
     maintask: "",
     taskplan: "",
     lefttask: "",
+    memo: "",
   });
+  const [isChecked, setIsChecked] = useState();
 
   const navigate = useNavigate();
 
@@ -20,17 +23,25 @@ const New = ({ onCreate }) => {
       state.maintask < 1 &&
       state.detailtask < 1 &&
       state.taskplan < 1 &&
-      state.lefttask < 1
+      state.lefttask < 1 &&
+      state.memo === ""
     ) {
       logref.current.focus();
       return;
     }
+
+    if (state.memo === "") {
+      alert("근무형태를 선택해주세요");
+      return;
+    }
+
     if (window.confirm("업무일지를 등록하시겠습니까?")) {
       onCreate(
         state.maintask,
         state.detailtask,
         state.lefttask,
-        state.taskplan
+        state.taskplan,
+        state.memo
       );
       navigate("/list", { replace: true });
     }
@@ -43,6 +54,14 @@ const New = ({ onCreate }) => {
     });
   };
 
+  const OnChangeType = (checked, type) => {
+    if (checked) {
+      setState({
+        ...state,
+        memo: type,
+      });
+    }
+  };
   return (
     <div className="New">
       <h2>{date} 업무일지 작성</h2>
@@ -98,6 +117,29 @@ const New = ({ onCreate }) => {
                 value={state.taskplan}
                 onChange={OnChangeState}
               />
+            </td>
+          </tr>
+          <tr>
+            <th>비고</th>
+            <td colSpan={3}>
+              <div className="New_memo">
+                {Type.map((item) => {
+                  return (
+                    <React.Fragment key={item.type}>
+                      <input
+                        type="radio"
+                        name="memo"
+                        id={item.type}
+                        onChange={(e) =>
+                          OnChangeType(e.target.checked, e.target.id)
+                        }
+                      />
+
+                      <label htmlFor={item.type}>{item.type}</label>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
             </td>
           </tr>
         </thead>

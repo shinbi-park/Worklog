@@ -33,6 +33,10 @@ const WorkLog = ({ originData }) => {
             <th>익일 업무 계획</th>
             <td colSpan={3}>{originData.taskplan}</td>
           </tr>
+          <tr className="">
+            <th>비고</th>
+            <td colSpan={3}>{originData.memo}</td>
+          </tr>
         </tbody>
       </table>
       <div className="New_button_wrap">
