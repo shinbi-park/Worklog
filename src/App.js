@@ -31,7 +31,20 @@ const App = () => {
     },
   ];
 
-  const onCreate = (maintask, detailtask, lefttask, taskplan, memo) => {
+  const Type = [
+    { id: "a", type: "내근" },
+    { id: "b", type: "출장" },
+    { id: "c", type: "연차" },
+  ];
+
+  const onCreate = (
+    maintask,
+    detailtask,
+    lefttask,
+    taskplan,
+    memo,
+    worktype
+  ) => {
     const newItem = {
       id: 1,
       division: "대표이사",
@@ -42,6 +55,7 @@ const App = () => {
       taskplan,
       memo,
       isUpload: "true",
+      worktype,
     };
     setData(newItem);
   };
@@ -51,7 +65,8 @@ const App = () => {
     newDetailtask,
     newLefttask,
     newtaskplan,
-    newMemo
+    newMemo,
+    newWorktype
   ) => {
     setData({
       ...data,
@@ -60,6 +75,7 @@ const App = () => {
       lefttask: newLefttask,
       taskplan: newtaskplan,
       memo: newMemo,
+      worktype: newWorktype,
     });
   };
 
@@ -83,11 +99,19 @@ const App = () => {
               />
             }
           />
-          <Route path="/new" element={<New onCreate={onCreate} />} />
+          <Route
+            path="/new"
+            element={<New onCreate={onCreate} Type={Type} />}
+          />
           <Route
             path="/ceo"
             element={
-              <CeoWorkLog data={data} onEdit={onEdit} onRemove={onRemove} />
+              <CeoWorkLog
+                data={data}
+                onEdit={onEdit}
+                onRemove={onRemove}
+                Type={Type}
+              />
             }
           />
           <Route

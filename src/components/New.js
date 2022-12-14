@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 
-const New = ({ onCreate }) => {
-  const Type = [{ type: "내근" }, { type: "출장" }, { type: "연차" }];
+const New = ({ onCreate, Type }) => {
   const logref = useRef();
   const [state, setState] = useState({
     detailtask: "",
@@ -12,7 +11,7 @@ const New = ({ onCreate }) => {
     lefttask: "",
     memo: "",
   });
-  const [isChecked, setIsChecked] = useState();
+  const [worktype, setWorktype] = useState("a");
 
   const navigate = useNavigate();
 
@@ -24,7 +23,7 @@ const New = ({ onCreate }) => {
       state.detailtask < 1 &&
       state.taskplan < 1 &&
       state.lefttask < 1 &&
-      state.memo === ""
+      worktype === "a"
     ) {
       logref.current.focus();
       return;
@@ -41,7 +40,8 @@ const New = ({ onCreate }) => {
         state.detailtask,
         state.lefttask,
         state.taskplan,
-        state.memo
+        state.memo,
+        worktype
       );
       navigate("/list", { replace: true });
     }
@@ -54,14 +54,11 @@ const New = ({ onCreate }) => {
     });
   };
 
-  const OnChangeType = (checked, type) => {
-    if (checked) {
-      setState({
-        ...state,
-        memo: type,
-      });
-    }
+  const OnChangeType = (e) => {
+    setState({ ...state, memo: e.target.id });
+    setWorktype(e.target.value);
   };
+
   return (
     <div className="New">
       <h2>{date} 업무일지 작성</h2>
@@ -125,14 +122,14 @@ const New = ({ onCreate }) => {
               <div className="New_memo">
                 {Type.map((item) => {
                   return (
-                    <React.Fragment key={item.type}>
+                    <React.Fragment key={item.id}>
                       <input
                         type="radio"
                         name="memo"
                         id={item.type}
-                        onChange={(e) =>
-                          OnChangeType(e.target.checked, e.target.id)
-                        }
+                        value={item.id}
+                        // checked={item.id === worktype}
+                        onChange={OnChangeType}
                       />
 
                       <label htmlFor={item.type}>{item.type}</label>

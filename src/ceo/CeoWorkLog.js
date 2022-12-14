@@ -2,9 +2,9 @@ import React, { memo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WorkLog from "../components/WorkLog";
 import { Button } from "primereact/button";
+import { type } from "@testing-library/user-event/dist/type";
 
-const CeoWorkLog = ({ data, onEdit, onRemove }) => {
-  const Type = [{ type: "내근" }, { type: "출장" }, { type: "연차" }];
+const CeoWorkLog = ({ data, onEdit, onRemove, Type }) => {
   const logref = useRef();
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [isWritten, setIsWritten] = useState(false);
@@ -13,6 +13,7 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
   const [curLeft, setCurLeft] = useState(data.lefttask);
   const [curPlan, setCurPlan] = useState(data.taskplan);
   const [curMemo, setCurMemo] = useState(data.memo);
+  const [curWorktype, setCurWorktype] = useState(data.worktype);
   const navigate = useNavigate();
 
   const isWrittenToggle = () => {
@@ -25,12 +26,21 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
   };
 
   const SaveEdit = () => {
-    if (curMain < 1 && curDetail < 1 && curLeft < 1 && curPlan < 1) {
+    if (
+      curMain < 1 &&
+      curDetail < 1 &&
+      curLeft < 1 &&
+      curPlan < 1 &&
+      curWorktype === "a"
+    ) {
       logref.current.focus();
       return;
     }
-    onEdit(curMain, curDetail, curLeft, curPlan, curMemo);
+    if (curWorktype === "b" || curWorktype === "c") {
+      onEdit(curMain, curDetail, curLeft, curPlan, curMemo, curWorktype);
+    }
 
+    onEdit(curMain, curDetail, curLeft, curPlan, curMemo, curWorktype);
     isWrittenToggle();
   };
 
@@ -40,6 +50,10 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
       setIsWritten(false);
       navigate("/list");
     }
+  };
+  const EditMemo = (e) => {
+    setCurWorktype(e.target.value);
+    setCurMemo(e.target.id);
   };
 
   return (
@@ -141,13 +155,16 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
                 <div className="New_memo">
                   {Type.map((item) => {
                     return (
-                      <React.Fragment key={item.type}>
+                      <React.Fragment key={item.id}>
                         <input
                           type="radio"
                           name="memo"
                           id={item.type}
-                          onChange={(e) => setCurMemo(e.target.id)}
+                          value={item.id}
+                          checked={item.id === curWorktype}
+                          onChange={EditMemo}
                         />
+
                         <label htmlFor={item.type}>{item.type}</label>
                       </React.Fragment>
                     );
@@ -170,9 +187,7 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
               className="p-button-raised p-button-info p-button-text"
               onClick={QuitEdit}
             />
-            {/* <button className="New_Edit" onClick={QuitEdit}>
-              수정 취소
-            </button> */}
+
             <Button
               style={{ fontSize: "13px", marginLeft: "10px" }}
               label="수정 완료"
@@ -180,9 +195,6 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
               className="p-button-raised p-button-info p-button-text"
               onClick={SaveEdit}
             />
-            {/* <button className="New_cancel" onClick={SaveEdit}>
-              수정 완료
-            </button> */}
           </>
         ) : (
           <>
@@ -194,9 +206,6 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
               onClick={isWrittenToggle}
             />
 
-            {/* <button className="New_cancel" onClick={isWrittenToggle}>
-              업무일지 수정
-            </button> */}
             <Button
               style={{ fontSize: "13px", marginLeft: "10px" }}
               label="업무 일지 메인"
@@ -204,9 +213,6 @@ const CeoWorkLog = ({ data, onEdit, onRemove }) => {
               className="p-button-raised p-button-info p-button-text"
               onClick={() => navigate("/list")}
             />
-            {/* <button className="New_Edit" onClick={() => navigate("/list")}>
-              업무일지 메인
-            </button> */}
           </>
         )}
       </div>
