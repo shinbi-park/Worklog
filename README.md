@@ -1,7 +1,9 @@
 ## 업무일지 프로젝트
 
 react를 이용한 간단한 FE 프로젝트입니다.
+
 업무일지를 모티브로하여 제작하였습니다.
+
 작성, 조회, 수정, 삭제기능을 다 구현하였습니다.
 
 ![image](https://github.com/shinbi-park/Worklog/assets/74188167/01536641-6348-4a97-a67d-2fc3f29eefcf)
